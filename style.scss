@@ -1,5 +1,336 @@
 /*
 Theme Name: Nathalie Mota
 Version: 1.0
-Template: twentytwentyfour
+Theme URI: https://www.nathaliemota.com
+Author: JCWAD
+Author URI: https://www.jcwad.re
+Description: Nathalie Mota, photographe professionnelle dans l’événementiel.
+Text Domain: nathaliemota
 */
+
+/* Init */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Container */
+.container {
+    width: 1440px;
+    max-width: 100%;
+    margin: auto;
+    background-color: white;
+    position: relative;
+
+    /*HEADER*/
+    .header {
+
+        height: 80px;
+        background-color: white;
+
+        .wrapper {
+            width: calc((1148 / 1440) * 100%);
+            height: inherit;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            /*LOGO*/
+            .logo {
+
+                max-width: 216px;
+                max-height: 14px;
+
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+
+            /*MENU*/
+            .nav-menu {
+                .menu {
+                    display: flex;
+                    list-style: none;
+
+                    .sous-menu {
+                        margin-left: 2em;
+
+                        .sous-menu-link {
+                            text-decoration: none;
+                            color: #000000;
+                            text-transform: uppercase;
+                            font-size: 16px;
+                            font-weight: 400;
+                            line-height: 23.7px;
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    /*CONTACT MODAL*/
+    #contact {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 2;
+
+        .contact-modal {
+            border: 5px solid black;
+            width: 597px;
+            max-width: 100%;
+            height: min-content;
+            background-color: white;
+            position: absolute;
+            overflow: auto;
+            /*centrer*/
+            top: 50%;
+            left: 50%;
+            right: 0;
+            bottom: 0;
+            transform: translate(-50%, -50%);
+            /*background*/
+            background-image: url('./assets/images/Contact.png'), url('./assets/images/Contact.png');
+            background-position: 130px top, top 50px center;
+            background-repeat: repeat-x, repeat-x;
+
+            /*padding*/
+            padding-top: 100px;
+
+            /*bouton close*/
+            .close {
+                cursor: pointer;
+                position: absolute;
+                right: 1em;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 30px;
+                height: 30px;
+
+                span {
+                    width: 100%;
+                    height: 1px;
+                    background-color: #000000;
+                    display: block;
+                }
+
+                .trait1 {
+                    transform: rotate(45deg);
+                }
+
+                .trait2 {
+                    transform: rotate(-45deg);
+                }
+            }
+
+            /*contact*/
+            .form-contact {
+                width: 263px;
+                max-width: 100%;
+                margin: auto;
+
+
+
+                form>div {
+                    margin: 0;
+                    position: absolute;
+                    z-index: 5;
+                    top: 0;
+                    right: 0;
+                    left: 0;
+                    background-color: white;
+                }
+
+                p {
+                    margin-top: 1.5em;
+
+                    label {
+                        font-size: 12px;
+                        font-weight: 500;
+                        line-height: 18px;
+                    }
+
+                    input,
+                    textarea {
+                        width: 100%;
+                        margin-top: 5px;
+                        outline: none;
+                        border-radius: 8px;
+                        border: 1px solid #B8BBC2;
+                        padding: 10px;
+                    }
+
+                    input {
+                        height: 40px;
+                    }
+
+                    input[type='submit'] {
+                        border-radius: 2px;
+                        height: 50px;
+                        background-color: #D8D8D8;
+                        cursor: pointer;
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    /*BLOC FULL IMAGE*/
+    .page-content {
+
+        .bloc-image-accueil {
+            position: relative;
+
+            .bloc-titre-image-accueil {
+                width: max-content;
+                position: absolute;
+                color: white;
+                font-weight: 700;
+                font-size: 96px;
+                line-height: 142.18px;
+                font-style: italic;
+                /*centrer*/
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+
+    section#photo.photo {
+        width: calc((1148 / 1440) * 100%);
+        margin: auto;
+        padding-bottom: 2em;
+
+        /*FILTRE CATEGORIE PHOTO*/
+        .categorie {
+            padding-top: 5em;
+
+            form {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+
+                .select-1 {
+                    margin-right: 2em;
+                }
+
+                .select-categorie {
+                    padding: 11px 18px;
+                    width: 260px;
+                    height: 42px;
+                    border: 1.3px solid #B8BBC2;
+                    border-radius: 8px;
+
+                    font-weight: 500;
+                    font-size: 12px;
+                    line-height: 18px;
+                    text-transform: uppercase;
+
+                    -webkit-appearance: none;
+                    /* Cache la flèche native */
+                    appearance: none;
+                    /* Laisse de la place pour la flèche */
+                    background: white;
+                    background-image: url('./assets/images/chevron-down-s.png');
+                    background-repeat: no-repeat;
+                    background-position: right 18px center;
+                    background-size: 20px 20px;
+                }
+
+                /*margin left auto*/
+                .select-trie {
+                    margin-left: auto;
+                }
+            }
+        }
+
+        /*ALLS PHOTO*/
+        .tous-photos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1em;
+
+            figure.flex-photo {
+                width: 564px;
+                max-width: 100%;
+                height: 495px;
+                background-color: brown;
+                text-align: center;
+
+                img {
+                    object-fit: cover;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        /*SINGLE PHOTO*/
+        .single-photo {
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: center;
+
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    footer {
+        width: 100%;
+        border-top: 1px solid black;
+        height: 40px;
+
+        .wrapper {
+            width: calc((1148 / 1440) * 100%);
+            height: inherit;
+            margin: auto;
+
+            .footer-menu {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: inherit;
+
+                .sous-menu {
+                    list-style: none;
+                    margin-left: 4em;
+
+                    .sous-menu-link {
+                        color: #000000;
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        font-size: 16px;
+                        font-weight: 400;
+                        line-height: 23.7px;
+                    }
+                }
+            }
+        }
+    }
+}
