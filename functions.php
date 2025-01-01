@@ -90,3 +90,50 @@ function mon_theme_menu_link($attrs)
     $attrs['class'] = 'sous-menu-link';
     return $attrs;
 }
+
+
+/***TAXONOMIES CATEGORIE FORMAT TRIER PAR */
+add_action('wp_ajax_filter_posts', 'filter_posts_by_taxonomy');
+add_action('wp_ajax_nopriv_filter_posts', 'filter_posts_by_taxonomy');
+
+function filter_posts_by_taxonomy() {
+    // Vérifier la requête AJAX
+    if (!isset($_POST['taxonomy']) || !isset($_POST['term_id'])) {
+        wp_send_json_error('Paramètres manquants');
+    }
+
+    $taxonomy = sanitize_text_field($_POST['taxonomy']);
+    $term_id = intval($_POST['term_id']);
+
+    // Requête pour récupérer les posts
+    $query = new WP_Query(array(
+        'post_type' => 'photo',
+        'tax_query' => array(
+            array(
+                'taxonomy' => $taxonomy,
+                'field'    => 'term_id',
+                'terms'    => $term_id,
+            ),
+        ),
+    ));
+
+    // Générer le contenu HTML
+    if ($query->have_posts()) {
+        ob_start();
+        while ($query->have_posts()) : $query->the_post(); ?>
+            <figure class="flex-photo">
+                <?php if (has_post_thumbnail()) : ?>
+                    <a href="<?php the_permalink(); ?>">
+                        <?php the_post_thumbnail('post-thumbnail'); ?>
+                    </a>
+                <?php endif; ?>
+            </figure>
+        <?php endwhile;
+        wp_reset_postdata();
+
+        $content = ob_get_clean();
+        wp_send_json_success($content);
+    } else {
+        wp_send_json_success('<p>Aucun article trouvé.</p>');
+    }
+}

@@ -14,6 +14,23 @@ let allBouton = document.querySelectorAll('.sous-menu-link');
 console.log(allBouton);
 console.log(divContact);
 
+function pageContact(event) {
+    //stop la propagation
+    event.stopPropagation();
+    //stop la page de recharger
+    event.preventDefault();
+
+    // event target provient du parent uniquement
+
+    // conditions si display == none
+    if (divContact.style.display === "none") {
+
+        //alors on affiche block
+        divContact.style.display = "block";
+    }
+}
+
+//bouton contact dans nav
 for (let index = 0; index < allBouton.length; index++) {
 
     //on parcours la boucle pour trouver #contact dans menu
@@ -22,29 +39,23 @@ for (let index = 0; index < allBouton.length; index++) {
     if (contact === '#contact') {
         // si #contact trouver on addeventlisterner le bouton
 
-        allBouton[index].addEventListener('click', function (event) {
-            //stop la propagation
-            event.stopPropagation();
-            //stop la page de recharger
-            event.preventDefault();
-
-            // event target provient du parent uniquement
-
-            // conditions si display == none
-            if (divContact.style.display === "none") {
-
-                //alors on affiche block
-                divContact.style.display = "block";
-            }
-        });
+        allBouton[index].addEventListener('click', pageContact);
     }
+}
+//bouton contact dans single.php
+let boutonContactPageSingle = document.querySelector('.boutonContactPageSingle');
+
+if (boutonContactPageSingle) {
+    //on verife que le bouton est vrai
+    boutonContactPageSingle.addEventListener('click', pageContact);
+
 }
 
 //bouton pour fermer le modale
 divContact.addEventListener('click', function (event) {
     //stop la propagation
     //event.stopPropagation();
-   //event.preventDefault();
+    //event.preventDefault();
 
     // on intéragit uniquement sur le parent avec event.target
     if (event.target === divContact) {

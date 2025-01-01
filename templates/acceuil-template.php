@@ -26,10 +26,10 @@ get_header();
 
 
 <!-- Template pour filtre categorie galerie photo ecran accueil -->
-<?php get_template_part('./templates-parts/filtre-categorie-template', get_post_format()); ?>
+<?php get_template_part('./templates-parts/filtre-categorie-template'); ?>
 
 <!-- TEMPLATE ALBUM PHOTO -->
-<?php get_template_part('./templates-parts/album-photo-template', get_post_format()) ?>
+<?php get_template_part('./templates-parts/album-photo-template'); ?>
 
 <?php
 // Footer
