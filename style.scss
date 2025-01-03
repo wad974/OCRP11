@@ -216,7 +216,8 @@ body {
         }
     }
 
-    section#photo.photo {
+    section#photo.photo,
+    #filtre {
 
         width: calc((1148 / 1440) * 100%);
         margin: auto;
@@ -279,11 +280,66 @@ body {
                 height: 495px;
                 background-color: brown;
                 text-align: center;
+                position: relative;
+                overflow: hidden;
 
-                img {
-                    object-fit: cover;
-                    width: 100%;
-                    height: 100%;
+                .link-flex-photo {
+
+
+                    img {
+                        object-fit: cover;
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    .card-photo {
+                        display: none;
+                        background-color: rgba(0, 0, 0, 0.6);
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        width: 100%;
+                        height: 100%;
+
+
+
+                        .card-photo-eye {
+                            width: min-content;
+                            height: min-content;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            right: 0;
+                            bottom: 0;
+                            transform: translate(-50%, -50%);
+                        }
+
+                        .card-photo-lightbox {
+                            width: 34px;
+                            height: 34px;
+                            position: absolute;
+                            top: 1em;
+                            right: 1em;
+                            cursor: pointer;
+                        }
+
+                        .card-photo-footer {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: flex-end;
+                            color: white;
+                            width: inherit;
+                            height: inherit;
+                            padding: 1em;
+                        }
+                    }
+
+                    &:hover .card-photo {
+                        display: block;
+                        cursor: default;
+                    }
                 }
             }
         }

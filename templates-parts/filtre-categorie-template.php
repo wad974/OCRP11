@@ -1,35 +1,41 @@
 <?php
 // on recuperer tous les taxo
+
 $photo = get_terms(array(
     'hide_empty' => false,
 ));
 
-/*
-echo '<pre>';
+
+/*echo '<pre>';
 print_r($photo);
 echo '</pre>';
-*/
+foreach ($photo as $cat) {
+
+    echo '<pre>';
+    print_r(get_term_link($cat));
+    echo '</pre>';
+}*/
+
 ?>
-<section id="photo" class="photo">
+<section id="filtre" class="filtre">
     <!-- FILTRE -->
     <div class="categorie">
-        <form action="" method="get">
+        <form id="ajax-form">
             <!-- categorie -->
 
-            <select class="select-categorie select-1" name="categorie" id="categorie">
-                <option value="">catégories</option>
-                <option value=""></option>
+            <select class="select-categorie select-1" name="choix" id="choix">
+                <option value="" selected>CATEGORIES</option>
                 <?php foreach ($photo as $cat): ?>
-                    <?php if ($cat->taxonomy === 'category'): ?>
+                    <?php if ($cat->taxonomy === 'category' && $cat->name !== 'Non classé'): ?>
                         <option value="<?php echo get_term_link($cat) ?>">
                             <?php echo $cat->name ?>
                         </option>
                     <?php endif; ?>
                 <?php endforeach; ?>
+
             </select>
-            <select class="select-categorie select-format" name="categorie" id="categorie">
-                <option value="">FORMATS</option>
-                <option value=""></option>
+            <select class="select-categorie select-format" name="choix" id="choix">
+                <option value="" selected>FORMAT</option>
                 <?php foreach ($photo as $format): ?>
                     <?php if ($format->taxonomy === 'format'): ?>
                         <option value="<?php echo get_term_link($format) ?>">
@@ -37,12 +43,14 @@ echo '</pre>';
                         </option>
                     <?php endif; ?>
                 <?php endforeach; ?>
+
+
             </select>
-            <select class="select-categorie select-trie" name="categorie" id="categorie">
-                <option value="">TRIER PAR</option>
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-                <option value="hamster">Hamster</option>
+            <select class="select-categorie select-trie" name="choix" id="choix">
+                <optgroup label="TRIER PAR">
+                    <option value="">Desc</option>
+                    <option value="">Asc</option>
+                </optgroup>
             </select>
         </form>
     </div>

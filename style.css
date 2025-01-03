@@ -184,7 +184,8 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.container section#photo.photo {
+.container section#photo.photo,
+.container #filtre {
   width: 79.7222222222%;
   margin: auto;
   padding-bottom: 2em;
@@ -192,19 +193,23 @@ body {
   /*ALLS PHOTO*/
   /*SINGLE PHOTO*/
 }
-.container section#photo.photo .categorie {
+.container section#photo.photo .categorie,
+.container #filtre .categorie {
   padding-top: 5em;
 }
-.container section#photo.photo .categorie form {
+.container section#photo.photo .categorie form,
+.container #filtre .categorie form {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   /*margin left auto*/
 }
-.container section#photo.photo .categorie form .select-1 {
+.container section#photo.photo .categorie form .select-1,
+.container #filtre .categorie form .select-1 {
   margin-right: 2em;
 }
-.container section#photo.photo .categorie form .select-categorie {
+.container section#photo.photo .categorie form .select-categorie,
+.container #filtre .categorie form .select-categorie {
   padding: 11px 18px;
   width: 260px;
   height: 42px;
@@ -225,79 +230,145 @@ body {
   background-position: right 18px center;
   background-size: 20px 20px;
 }
-.container section#photo.photo .categorie form .select-trie {
+.container section#photo.photo .categorie form .select-trie,
+.container #filtre .categorie form .select-trie {
   margin-left: auto;
 }
-.container section#photo.photo .tous-photos {
+.container section#photo.photo .tous-photos,
+.container #filtre .tous-photos {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 1em;
 }
-.container section#photo.photo .tous-photos figure.flex-photo {
+.container section#photo.photo .tous-photos figure.flex-photo,
+.container #filtre .tous-photos figure.flex-photo {
   width: 564px;
   max-width: 100%;
   height: 495px;
   background-color: brown;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
-.container section#photo.photo .tous-photos figure.flex-photo img {
+.container section#photo.photo .tous-photos figure.flex-photo .link-flex-photo img,
+.container #filtre .tous-photos figure.flex-photo .link-flex-photo img {
   -o-object-fit: cover;
      object-fit: cover;
   width: 100%;
   height: 100%;
 }
-.container section#photo.photo .terms {
+.container section#photo.photo .tous-photos figure.flex-photo .link-flex-photo .card-photo,
+.container #filtre .tous-photos figure.flex-photo .link-flex-photo .card-photo {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+.container section#photo.photo .tous-photos figure.flex-photo .link-flex-photo .card-photo .card-photo-eye,
+.container #filtre .tous-photos figure.flex-photo .link-flex-photo .card-photo .card-photo-eye {
+  width: -moz-min-content;
+  width: min-content;
+  height: -moz-min-content;
+  height: min-content;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: 0;
+  bottom: 0;
+  transform: translate(-50%, -50%);
+}
+.container section#photo.photo .tous-photos figure.flex-photo .link-flex-photo .card-photo .card-photo-lightbox,
+.container #filtre .tous-photos figure.flex-photo .link-flex-photo .card-photo .card-photo-lightbox {
+  width: 34px;
+  height: 34px;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  cursor: pointer;
+}
+.container section#photo.photo .tous-photos figure.flex-photo .link-flex-photo .card-photo .card-photo-footer,
+.container #filtre .tous-photos figure.flex-photo .link-flex-photo .card-photo .card-photo-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: white;
+  width: inherit;
+  height: inherit;
+  padding: 1em;
+}
+.container section#photo.photo .tous-photos figure.flex-photo .link-flex-photo:hover .card-photo,
+.container #filtre .tous-photos figure.flex-photo .link-flex-photo:hover .card-photo {
+  display: block;
+  cursor: default;
+}
+.container section#photo.photo .terms,
+.container #filtre .terms {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: flex-end;
 }
-.container section#photo.photo .terms .terms-data {
+.container section#photo.photo .terms .terms-data,
+.container #filtre .terms .terms-data {
   width: 564px;
   max-width: 100%;
   border-bottom: 1px solid black;
 }
-.container section#photo.photo .terms .terms-data .terms-data-bas {
+.container section#photo.photo .terms .terms-data .terms-data-bas,
+.container #filtre .terms .terms-data .terms-data-bas {
   max-width: 420px;
 }
 .container section#photo.photo .terms .terms-data .terms-data-bas h1,
-.container section#photo.photo .terms .terms-data .terms-data-bas p {
+.container section#photo.photo .terms .terms-data .terms-data-bas p,
+.container #filtre .terms .terms-data .terms-data-bas h1,
+.container #filtre .terms .terms-data .terms-data-bas p {
   text-transform: uppercase;
   font-weight: 400;
 }
-.container section#photo.photo .terms .terms-data .terms-data-bas h1 {
+.container section#photo.photo .terms .terms-data .terms-data-bas h1,
+.container #filtre .terms .terms-data .terms-data-bas h1 {
   font-style: italic;
   font-size: 66px;
   line-height: 58px;
   padding-bottom: 0.5em;
 }
-.container section#photo.photo .terms .terms-data .terms-data-bas p {
+.container section#photo.photo .terms .terms-data .terms-data-bas p,
+.container #filtre .terms .terms-data .terms-data-bas p {
   font-size: 14px;
   line-height: 20.73px;
   padding-bottom: 1em;
 }
-.container section#photo.photo .terms .terms-photo {
+.container section#photo.photo .terms .terms-photo,
+.container #filtre .terms .terms-photo {
   width: 563px;
   max-width: 100%;
   height: 844px;
   background-color: aquamarine;
 }
-.container section#photo.photo .terms .terms-photo img {
+.container section#photo.photo .terms .terms-photo img,
+.container #filtre .terms .terms-photo img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
-.container section#photo.photo .pagination {
+.container section#photo.photo .pagination,
+.container #filtre .pagination {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid black;
   flex-wrap: wrap;
 }
-.container section#photo.photo .pagination .left-pagination {
+.container section#photo.photo .pagination .left-pagination,
+.container #filtre .pagination .left-pagination {
   padding: 2em 0;
   width: 563px;
   max-width: 100%;
@@ -306,13 +377,15 @@ body {
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.container section#photo.photo .pagination .left-pagination p {
+.container section#photo.photo .pagination .left-pagination p,
+.container #filtre .pagination .left-pagination p {
   font-weight: 300;
   font-size: 14px;
   line-height: 21px;
   text-transform: capitalize;
 }
-.container section#photo.photo .pagination .left-pagination button {
+.container section#photo.photo .pagination .left-pagination button,
+.container #filtre .pagination .left-pagination button {
   width: 272px;
   max-width: 100%;
   background-color: #D8D8D8;
@@ -326,61 +399,71 @@ body {
   text-transform: capitalize;
   cursor: pointer;
 }
-.container section#photo.photo .pagination .right-pagination {
+.container section#photo.photo .pagination .right-pagination,
+.container #filtre .pagination .right-pagination {
   width: 563px;
   max-width: 100%;
   display: flex;
   justify-content: flex-end;
 }
-.container section#photo.photo .pagination .right-pagination .photo-right-pagination {
+.container section#photo.photo .pagination .right-pagination .photo-right-pagination,
+.container #filtre .pagination .right-pagination .photo-right-pagination {
   width: 81px;
   max-width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.container section#photo.photo .pagination .right-pagination .photo-right-pagination .image-photo-right-pagination {
+.container section#photo.photo .pagination .right-pagination .photo-right-pagination .image-photo-right-pagination,
+.container #filtre .pagination .right-pagination .photo-right-pagination .image-photo-right-pagination {
   width: 100%;
   height: 71px;
   background-color: brown;
 }
-.container section#photo.photo .pagination .right-pagination .photo-right-pagination figcaption {
+.container section#photo.photo .pagination .right-pagination .photo-right-pagination figcaption,
+.container #filtre .pagination .right-pagination .photo-right-pagination figcaption {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   margin-top: 0.5em;
 }
-.container section#photo.photo .pagination .right-pagination .photo-right-pagination figcaption img {
+.container section#photo.photo .pagination .right-pagination .photo-right-pagination figcaption img,
+.container #filtre .pagination .right-pagination .photo-right-pagination figcaption img {
   width: 25px;
   height: auto;
 }
-.container section#photo.photo .vous-aimerez-aussi {
+.container section#photo.photo .vous-aimerez-aussi,
+.container #filtre .vous-aimerez-aussi {
   display: flex;
   flex-direction: column;
   padding: 4em 0;
 }
-.container section#photo.photo .vous-aimerez-aussi p {
+.container section#photo.photo .vous-aimerez-aussi p,
+.container #filtre .vous-aimerez-aussi p {
   font-size: 18px;
   font-weight: 400;
   line-height: 26.66px;
   text-transform: uppercase;
   padding-bottom: 2em;
 }
-.container section#photo.photo .vous-aimerez-aussi .photo-vous-aimerez-aussi {
+.container section#photo.photo .vous-aimerez-aussi .photo-vous-aimerez-aussi,
+.container #filtre .vous-aimerez-aussi .photo-vous-aimerez-aussi {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
 }
-.container section#photo.photo .vous-aimerez-aussi .photo-vous-aimerez-aussi figure {
+.container section#photo.photo .vous-aimerez-aussi .photo-vous-aimerez-aussi figure,
+.container #filtre .vous-aimerez-aussi .photo-vous-aimerez-aussi figure {
   width: 564px;
   max-width: 100%;
   height: 495px;
   max-height: 100%;
   background-color: #D8D8D8;
 }
-.container section#photo.photo .vous-aimerez-aussi .photo-vous-aimerez-aussi figure .link-photo-vous-aimerez-aussi img {
+.container section#photo.photo .vous-aimerez-aussi .photo-vous-aimerez-aussi figure .link-photo-vous-aimerez-aussi img,
+.container #filtre .vous-aimerez-aussi .photo-vous-aimerez-aussi figure .link-photo-vous-aimerez-aussi img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;

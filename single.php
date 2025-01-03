@@ -62,7 +62,6 @@ if ($query->have_posts()) {
     $keyPost = random_int(0, $totalPosts - 1);
     $keyPost2 = random_int(0, $totalPosts + 1);
 }
-
 // Vérifiez si la requête a des articles
 
 ?>
@@ -159,5 +158,8 @@ if ($query->have_posts()) {
         </div>
     <?php endif; ?>
 </section>
+
+<?php wp_reset_postdata(); ?>
+
 <!-- footer -->
 <?php get_footer() ?>

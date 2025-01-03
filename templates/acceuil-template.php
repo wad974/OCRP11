@@ -4,6 +4,7 @@
  * Template Name: Template Page Accueil
  */
 
+
 ?>
 
 <?php
@@ -12,6 +13,7 @@ get_header();
 ?>
 
 <!-- Body -->
+<h1>template</h1>
 <?php if (have_posts()) : ?>
 
     <?php if (trim(get_the_content()) !== '') : ?>
@@ -20,16 +22,15 @@ get_header();
             <?php the_content(); ?>
         </div>
 
+        <!-- Template pour filtre categorie galerie photo ecran accueil -->
+        <?php get_template_part('./templates-parts/filtre-categorie-template'); ?>
+
+        <!-- TEMPLATE ALBUM PHOTO -->
+        <?php get_template_part('./templates-parts/album-photo-template'); ?>
+
     <?php endif; ?>
 
 <?php endif; ?>
-
-
-<!-- Template pour filtre categorie galerie photo ecran accueil -->
-<?php get_template_part('./templates-parts/filtre-categorie-template'); ?>
-
-<!-- TEMPLATE ALBUM PHOTO -->
-<?php get_template_part('./templates-parts/album-photo-template'); ?>
 
 <?php
 // Footer
