@@ -32,6 +32,20 @@
 
                 <!-- NAVIGATION -->
                 <nav class="nav-menu">
+                    <!--TOOGLE-->
+
+                    <button class="burger-bouton">
+                        <span class="burger-bouton-trait"></span>
+                        <span class="burger-bouton-trait"></span>
+                        <span class="burger-bouton-trait"></span>
+                    </button>
+                    <button class="burger-close">
+                        <span class="burger-bouton-trait trait1"></span>
+                        <span class="burger-bouton-trait trait2"></span>
+                    </button>
+
+
+                    <!--menu-->
                     <?php
                     $args = array(
                         'theme_location' => 'header', // Nom de l'emplacement du menu défini dans functions.php
@@ -39,9 +53,8 @@
                     );
                     wp_nav_menu($args);
                     ?>
+
+
                 </nav>
             </section>
         </header>
-
-        <!--on affiche contact-->
-        <?php get_template_part('templates-parts/contact-template', get_post_format()) ?>

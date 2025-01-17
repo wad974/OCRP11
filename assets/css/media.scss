@@ -1,0 +1,586 @@
+/*
+    ECRAN MAX 1439 PX
+*/
+@media all and (max-width: 1439px) {
+
+    html,
+    body {
+
+        .container {
+            .page-content {
+                .bloc-titre-image-accueil h1 {
+                    font-size: 5.9em;
+                }
+            }
+
+            #photo.photo,
+            #filtre {
+                .pagination {
+                    .left-pagination {
+                        width: 40%;
+                        justify-content: center;
+
+                        p {
+                            margin-bottom: 1em;
+                        }
+                    }
+                }
+
+                .terms {
+                    .terms-data {
+                        width: 40%;
+                    }
+                }
+
+                .tous-photos {
+                    justify-content: space-evenly;
+
+                    figure.flex-photo {
+                        width: 48%;
+                        height: 450px;
+                    }
+                }
+            }
+
+            footer {
+                .wrapper {
+                    .footer-menu {
+                        width: 100%;
+                    }
+                }
+            }
+
+        }
+
+    }
+
+}
+
+
+
+/*
+    ECRAN MAX 1024 PX
+*/
+
+@media all and (max-width: 1024px) {
+
+    html,
+    body {
+        .container {
+            .header {
+
+                .wrapper {
+                    width: 100%;
+                    padding: 0 1em;
+                }
+            }
+
+
+            .page-content {
+                .bloc-titre-image-accueil h1 {
+                    font-size: 4.5em;
+                }
+            }
+
+            #photo.photo,
+            #filtre {
+                width: 100%;
+                padding-right: 1em;
+                padding-left: 1em;
+
+                .pagination {
+
+                    justify-content: center;
+
+                    .left-pagination {
+                        width: 40%;
+                        justify-content: center;
+
+                        p {
+                            margin-bottom: 1em;
+                            font-size: 1.15em;
+                        }
+
+                        button {
+                            font-size: 1em;
+                        }
+                    }
+
+                    .right-pagination {
+                        justify-content: flex-end;
+                    }
+                }
+
+                .terms {
+                    .terms-data {
+                        width: 40%;
+                    }
+
+                    .terms-photo {
+                        margin: auto;
+                        margin-top: 2em;
+                    }
+                }
+
+                .tous-photos {
+                    justify-content: space-evenly;
+
+                    figure.flex-photo {
+                        width: 48.5%;
+                        height: 395px;
+                    }
+                }
+            }
+
+            footer {
+                .wrapper {
+                    .footer-menu {
+                        width: 100%;
+                    }
+                }
+            }
+
+        }
+
+    }
+
+}
+
+/*
+    ECRAN MAX 1020 PX
+*/
+
+@media all and (max-width: 1020px) {
+
+    html,
+    body {
+        .container {
+            .header {
+
+                .wrapper {
+                    width: 100%;
+                    padding: 0 1em;
+                }
+            }
+
+
+            .page-content {
+                .bloc-titre-image-accueil h1 {
+                    font-size: 4.5em;
+                }
+            }
+
+            #photo.photo,
+            #filtre {
+                width: 100%;
+                padding-right: 1em;
+                padding-left: 1em;
+
+                .pagination {
+
+                    justify-content: center;
+
+                    .left-pagination {
+                        width: 40%;
+                        justify-content: center;
+
+                        p {
+                            margin-bottom: 1em;
+                            font-size: 1.15em;
+                        }
+
+                        button {
+                            font-size: 1em;
+                        }
+                    }
+
+                    .right-pagination {
+                        justify-content: center;
+
+                        .photo-right-pagination {
+                            width: 50%;
+
+                            img {
+                                height: 75%;
+                            }
+
+                            figcaption {
+                                margin-top: -1em;
+                                margin-bottom: 2em;
+
+                                img {
+                                    width: 30px;
+                                    height: 20px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .terms {
+                    .terms-data {
+                        width: 40%;
+                    }
+
+                    .terms-photo {
+                        margin: auto;
+                        margin-top: 2em;
+                    }
+                }
+
+                .tous-photos {
+                    justify-content: space-evenly;
+
+                    figure.flex-photo {
+                        width: 48.5%;
+                        height: 395px;
+                    }
+                }
+            }
+
+            footer {
+                .wrapper {
+                    .footer-menu {
+                        width: 100%;
+                    }
+                }
+            }
+
+        }
+
+    }
+
+}
+
+/*
+    ECRAN MAX 768 PX
+*/
+
+@media all and (max-width: 768px) {
+
+    html,
+    body {
+        .container {
+            .header {
+                position: fixed;
+                z-index: 1;
+                width: 100%;
+                box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+
+
+                .wrapper {
+                    width: 100%;
+                    padding: 0 3em;
+
+                    .logo {
+                        width: 138px;
+                        height: auto;
+                    }
+
+                    .nav-menu {
+
+
+
+                        .burger-bouton {
+
+                            background-color: transparent !important;
+                            border: none;
+
+                            width: 27.42px;
+                            height: 18.85px;
+
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            align-items: center;
+
+                            .burger-bouton-trait {
+                                width: 100%;
+                                height: 1px;
+                                background-color: black;
+                                display: block;
+                            }
+
+                        }
+
+                        .burger-close {
+                            display: none;
+
+                            background-color: transparent !important;
+                            border: none;
+
+                            width: 27.42px;
+                            height: 18.85px;
+
+                            .burger-bouton-trait {
+                                width: 100%;
+                                height: 1px;
+                                background-color: black;
+                                display: block;
+                            }
+
+                            .trait1 {
+                                transform: rotate(45deg) translateY(1px);
+                            }
+
+                            .trait2 {
+                                transform: rotate(-45deg);
+                            }
+                        }
+
+
+                        #menu-header {
+                            display: none;
+                            position: fixed;
+                            height: 100%;
+                            top: 160px;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            background-color: red;
+                            z-index: 120;
+                            justify-content: center;
+                            align-items: center;
+                            flex-direction: column;
+
+                            .sous-menu {
+                                margin-bottom: 1.5em;
+
+                                .sous-menu-link {
+                                    color: white;
+                                    font-family: 'Space-Mono-Regular';
+                                    font-weight: 400;
+                                    font-size: 44px;
+                                    line-height: 65.16px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            .page-content {
+                padding: 80px 0 0 0 !important;
+
+                .bloc-titre-image-accueil h1 {
+                    font-size: 4.5em;
+                }
+            }
+
+            #photo.photo,
+            #filtre {
+                width: 100%;
+                padding-right: 3em;
+                padding-left: 3em;
+
+                .terms {
+                    padding: 80px 0 0 0 !important;
+
+                }
+
+                .categorie {
+                    form {
+                        flex-wrap: wrap;
+
+                        select.select-categorie {
+                            margin: 0 auto;
+                            margin-bottom: 5px;
+                            min-height: 43px;
+                            min-width: 270px;
+                            width: 100%;
+                            max-width: 85%;
+                            font-size: 1em;
+                        }
+                    }
+                }
+
+                .tous-photos {
+
+                    justify-content: space-evenly;
+
+                    .bouton {
+                        font-size: 1em;
+                    }
+
+                    figure.flex-photo {
+                        min-width: 317px;
+                        width: 100%;
+                        min-height: 278px;
+                        max-height: 485px;
+                        height: 100%;
+                    }
+                }
+            }
+
+            footer {
+                height: auto;
+                padding: 2em 0;
+
+                .wrapper {
+                    .footer-menu {
+                        width: 100%;
+                        flex-wrap: wrap;
+                        display: flex;
+                        flex-direction: column;
+
+                        .sous-menu {
+                            margin: 2em;
+
+                            .sous-menu-link {
+                                font-size: 2em;
+                                margin-bottom: 1em;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+    }
+
+}
+
+
+/*
+    ECRAN MAX 375 PX
+*/
+
+@media all and (max-width: 767px) {
+
+    html,
+    body {
+        .container {
+            .header {
+
+                box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+
+                .wrapper {
+                    width: 100%;
+                    padding: 0 3em;
+                }
+            }
+
+
+            .page-content {
+
+                .bloc-image-accueil {
+                    height: 253px;
+                }
+
+                .bloc-titre-image-accueil h1 {
+                    font-size: 2em;
+                }
+            }
+
+            #photo.photo,
+            #filtre {
+                width: 100%;
+                padding-right: 3em;
+                padding-left: 3em;
+
+                .terms {
+
+
+                    flex-direction: column-reverse;
+                    align-items: center;
+                    justify-content: center;
+
+                    .terms-data {
+                        width: 265px;
+                        margin: 2em 0;
+                        border: none;
+
+                        .terms-data-bas h1 {
+                            font-size: 46px;
+                        }
+
+                        .terms-data-bas p {
+                            font-family: 'Space-Mono-Regular';
+                            font-weight: 400;
+                        }
+                    }
+
+                    .terms-photo {
+                        max-width: 265px;
+                        max-height: 397px;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .pagination {
+
+                    border-top: 1px solid black;
+
+                    .left-pagination {
+                        width: 100%;
+                    }
+
+                    .right-pagination {
+                        display: none;
+                    }
+                }
+
+                .categorie {
+                    padding-top: 2em;
+
+                    form {
+                        flex-wrap: wrap;
+
+                        select.select-categorie {
+                            margin: 0 auto;
+                            margin-bottom: 5px;
+                            min-height: 43px;
+                            min-width: 270px;
+                            width: 100%;
+                            max-width: 85%;
+                            font-size: 1em;
+                        }
+                    }
+                }
+
+                .tous-photos {
+                    justify-content: center;
+
+                    figure.flex-photo {
+                        width: 317.66px;
+
+                        height: 278.8px;
+
+                    }
+                }
+
+                .vous-aimerez-aussi {
+                    text-align: center;
+                }
+            }
+
+            footer {
+                height: auto;
+                padding: 2em 0;
+
+                .wrapper {
+                    .footer-menu {
+                        width: 100%;
+                        flex-wrap: wrap;
+                        display: flex;
+                        flex-direction: column;
+
+                        .sous-menu {
+                            margin: 1em;
+
+                            .sous-menu-link {
+                                font-size: 1em;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+
+    }
+
+}

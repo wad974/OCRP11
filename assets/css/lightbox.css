@@ -1,0 +1,124 @@
+/*
+* CSS POUR LIGHTBOX UNIQUEMENT
+* 
+*/
+#diapo {
+  display: none;
+}
+#diapo button {
+  background-color: transparent !important;
+}
+
+.lightbox {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.85);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  animation: lightboxFadeIn 0.5s;
+}
+.lightbox .conteneur {
+  width: 100%;
+  max-width: 45vw;
+  height: 100%;
+  max-height: 60vh;
+  display: flex;
+  flex-direction: column;
+}
+.lightbox .conteneur .top {
+  margin-left: auto;
+  margin-bottom: 5em;
+  margin-top: -5em;
+}
+.lightbox .conteneur .top .lightbox__close {
+  background-image: url("../images/Group33.svg");
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 23px;
+  height: 23px;
+  cursor: pointer;
+  transition: 0.25s;
+  opacity: 0.5;
+}
+.lightbox .conteneur .top .lightbox__close:hover {
+  opacity: 1;
+}
+.lightbox .conteneur .bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto 0;
+}
+.lightbox .conteneur .bottom .arrow {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: inherit;
+  font-weight: 400;
+  font-size: 12px;
+  font-family: "Space-Mono-Regular";
+  transition: all 0.5s;
+  opacity: 0.5;
+}
+.lightbox .conteneur .bottom .arrow_right {
+  padding-right: 2.9em;
+  background: url("../images/LineRight.svg") no-repeat right/25px;
+  cursor: pointer;
+}
+.lightbox .conteneur .bottom .arrow_right:hover {
+  background-size: 34px;
+  opacity: 1;
+  font-family: "Space-Mono-Bold";
+}
+.lightbox .conteneur .bottom .arrow_left {
+  padding-left: 2.9em;
+  background: url("../images/LineLeft.svg") no-repeat left/25px;
+  cursor: pointer;
+}
+.lightbox .conteneur .bottom .arrow_left:hover {
+  background-size: 34px;
+  opacity: 1;
+  font-family: "Space-Mono-Bold";
+}
+.lightbox .conteneur .lightbox__container {
+  display: flex;
+  flex-direction: column;
+  max-width: 564px;
+  max-height: 495px;
+  width: 100%;
+  height: 100%;
+}
+.lightbox .conteneur .lightbox__container img {
+  width: 564px;
+  height: 495px;
+  max-width: 100%;
+  max-height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.lightbox .conteneur .lightbox__container .sous-image {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1em;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  font-family: "Space-Mono-Regular";
+  text-transform: uppercase;
+}
+
+@keyframes lightboxFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}/*# sourceMappingURL=lightbox.css.map */

@@ -1,71 +1,103 @@
 <?php
 
-/** REGISTER THEME SUPPORT */
-add_action('after_setup_theme', 'mon_theme_support');
-function mon_theme_support()
+/**STYLE CSS**/
+add_action('wp_enqueue_scripts', 'theme_styles');
+function theme_styles()
 {
+    //CSS
+    //wp_enqueue_style('parent-style', get_template_directory_uri() . '/style.css');
 
-    /*on active title tag*/
-    add_theme_support('title_tag');
-
-    /*LOGO DU SITE*/
-    add_theme_support('custom-logo');
-
-    /*on active l'ajoute des images dans articles*/
-    add_theme_support('post-thumbnails');
-
-    /*GESTION DES MENU*/
-    add_theme_support('menus');
-    register_nav_menu('header', 'header-menu');
-    register_nav_menu('footer', 'footer-menu');
-}
-
-/*STYLE CSS*/
-
-add_action('wp_enqueue_scripts', 'mon_style_support');
-function mon_style_support()
-{
-    /*conditions version si dev ou prod*/
-    $theme   = wp_get_theme('nathaliamota');
-    $version = (defined('WP_DEBUG') && WP_DEBUG)
-        ?  filemtime(get_stylesheet_directory() . '/style.css')
-        :  $theme->get('Version');
-
-    /*STYLE CSS*/
-    wp_deregister_style('parent_style');
-    wp_register_style(
-        'parent_style',
+    wp_enqueue_style(
+        'child-style',
         get_stylesheet_directory_uri() . '/style.css',
         array(),
         filemtime(get_stylesheet_directory() . '/style.css')
     );
-    wp_enqueue_style('parent_style');
-    /*ANIMATION CSS*/
+
+    /**FONTS CSS */
     wp_enqueue_style(
-        'animation_style',
-        get_stylesheet_directory_uri() . '/assets/css/animation.css',
+        'Fonts-style',
+        get_stylesheet_directory_uri() . '/assets/css/fonts.css',
         array(),
-        filemtime(get_stylesheet_directory() . '/assets/css/animation.css')
+        filemtime(get_stylesheet_directory() . '/assets/css/fonts.css')
     );
-    /*MEDIA CSS*/
+
+    /**LIGHTBOX */
     wp_enqueue_style(
-        'media_style',
+        'lightbox-style',
+        get_stylesheet_directory_uri() . '/assets/css/lightbox.css',
+        array(),
+        filemtime(get_stylesheet_directory() . '/assets/css/lightbox.css')
+    );
+    wp_enqueue_script(
+        'lightbox-script',
+        get_stylesheet_directory_uri() . '/assets/js/lightbox.js',
+        array(),
+        filemtime(get_stylesheet_directory() . '/assets/js/lightbox.js'),
+        true
+    );
+
+    /**MEDIA QUERIE CSS */
+    wp_enqueue_style(
+        'media-style',
         get_stylesheet_directory_uri() . '/assets/css/media.css',
         array(),
         filemtime(get_stylesheet_directory() . '/assets/css/media.css')
     );
 
-    /*JAVASCRIPT*/
-    /*INDEX.JS*/
+    //SCRIPT FUNCTION
     wp_enqueue_script(
-        'index_script',
+        'function-script',
+        get_stylesheet_directory_uri() . '/assets/js/function.js',
+        array(),
+        filemtime(get_stylesheet_directory() . '/assets/js/function.js'),
+        true
+    );
+    wp_enqueue_script(
+        'index-script',
         get_stylesheet_directory_uri() . '/assets/js/index.js',
         array(),
         filemtime(get_stylesheet_directory() . '/assets/js/index.js'),
         true
     );
+
+    /*BURGER UNIQUEMENT*/
+    wp_enqueue_script(
+        'burger-script',
+        get_stylesheet_directory_uri() . '/assets/js/burger.js',
+        array(),
+        filemtime(get_stylesheet_directory() . '/assets/js/burger.js'),
+        true
+    );
+
+    
 }
 
+function capitaine_assets()
+{
+
+    // …
+
+    // Charger notre script
+    wp_enqueue_script(
+        'capitaine',
+        get_stylesheet_directory_uri() . '/assets/js/script.js',
+        ['jquery'],
+        filemtime(get_stylesheet_directory() . '/assets/js/script.js'),
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'capitaine_assets');
+
+/** REGISTER THEME SUPPORT */
+add_action('after_setup_theme', 'mon_theme_support');
+function mon_theme_support()
+{
+    /*GESTION DES MENU*/
+    add_theme_support('menus');
+    register_nav_menu('header', 'header-menu');
+    register_nav_menu('footer', 'footer-menu');
+}
 
 /**
  * FILTRE MENU ITEMPS
@@ -92,48 +124,63 @@ function mon_theme_menu_link($attrs)
 }
 
 
-/***TAXONOMIES CATEGORIE FORMAT TRIER PAR */
-add_action('wp_ajax_filter_posts', 'filter_posts_by_taxonomy');
-add_action('wp_ajax_nopriv_filter_posts', 'filter_posts_by_taxonomy');
+add_action('wp_ajax_capitaine_load_comments', 'capitaine_load_comments');
+add_action('wp_ajax_nopriv_capitaine_load_comments', 'capitaine_load_comments');
 
-function filter_posts_by_taxonomy() {
-    // Vérifier la requête AJAX
-    if (!isset($_POST['taxonomy']) || !isset($_POST['term_id'])) {
-        wp_send_json_error('Paramètres manquants');
+function capitaine_load_comments()
+{
+
+    // Vérification de sécurité
+    if (
+        ! isset($_REQUEST['nonce']) or
+        ! wp_verify_nonce($_REQUEST['nonce'], 'capitaine_load_comments')
+    ) {
+        wp_send_json_error("Vous n’avez pas l’autorisation d’effectuer cette action.", 403);
     }
 
-    $taxonomy = sanitize_text_field($_POST['taxonomy']);
-    $term_id = intval($_POST['term_id']);
+    // On vérifie que l'identifiant a bien été envoyé
+    if (! isset($_POST['postid'])) {
+        wp_send_json_error("L'identifiant de l'article est manquant.", 400);
+    }
 
-    // Requête pour récupérer les posts
-    $query = new WP_Query(array(
-        'post_type' => 'photo',
-        'tax_query' => array(
-            array(
-                'taxonomy' => $taxonomy,
-                'field'    => 'term_id',
-                'terms'    => $term_id,
-            ),
-        ),
+    // Récupération des données du formulaire
+    $post_id = intval($_POST['postid']);
+
+    // Répondre avec l'URL de la page d'archive
+    wp_send_json_success(array(
+        'archiveUrl' => get_post_type_archive_link('photo'), // Remplacez 'post' par votre type de post si nécessaire
     ));
+}
 
-    // Générer le contenu HTML
-    if ($query->have_posts()) {
-        ob_start();
-        while ($query->have_posts()) : $query->the_post(); ?>
-            <figure class="flex-photo">
-                <?php if (has_post_thumbnail()) : ?>
-                    <a href="<?php the_permalink(); ?>">
-                        <?php the_post_thumbnail('post-thumbnail'); ?>
-                    </a>
-                <?php endif; ?>
-            </figure>
-        <?php endwhile;
-        wp_reset_postdata();
+add_action('wp_ajax_lightbox', 'lightbox');
+add_action('wp_ajax_nopriv_lightbox', 'lightbox');
 
-        $content = ob_get_clean();
-        wp_send_json_success($content);
-    } else {
-        wp_send_json_success('<p>Aucun article trouvé.</p>');
+function lightbox()
+{
+    // Vérification de sécurité
+    if (
+        ! isset($_REQUEST['nonce']) or
+        ! wp_verify_nonce($_REQUEST['nonce'], 'lightbox')
+    ) {
+        wp_send_json_error("Vous n’avez pas l’autorisation d’effectuer cette action.", 403);
     }
+
+    // On vérifie que l'identifiant a bien été envoyé
+    if (! isset($_POST['postid'])) {
+        wp_send_json_error("L'identifiant de l'article est manquant.", 400);
+    }
+
+    // Récupération des données du formulaire
+    $post_id = intval($_POST['postid']);
+
+
+    // Récupération de l'image à la une
+    if (has_post_thumbnail($post_id)) {
+        $image_url = get_the_post_thumbnail_url($post_id, 'full'); // Récupérer l'URL de l'image à la une
+    } else {
+        wp_send_json_error("Aucune image trouvée pour cet article.", 404);
+    }
+
+    // Répondre avec l'URL de l'image
+    wp_send_json_success(['image_url' => $image_url]);
 }

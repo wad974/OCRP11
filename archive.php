@@ -1,3 +1,9 @@
+<?php
+
+wp_head();
+
+?>
+
 <div class="tous-photos">
     <?php
     // Nouvelle requête pour récupérer les articles
@@ -44,8 +50,8 @@
 
     // Debugging : Affiche les arguments utilisés dans la requête
     /*echo '<pre>';
-        print_r($args);
-        echo '</pre>';*/
+    print_r($args);
+    echo '</pre>';*/
     // Nouvelle instance de WP_Query
     $query = new WP_Query($args);
     /*echo '<pre>';
@@ -56,6 +62,13 @@
     // Vérifier si la requête contient des articles
     ?>
 
-    <?php require(get_stylesheet_directory() . '/templates-parts/view/card-view.php'); ?>
+    <?php require('templates_parts/view/card-view.php') ?>
+    <?php get_template_part('templates_parts/lightbox-template') ?>
 
 </div>
+
+<?php
+
+wp_footer();
+
+?>

@@ -1,14 +1,9 @@
 /*
 Theme Name: Nathalie Mota
-Version: 1.0
-Theme URI: https://www.nathaliemota.com
-Author: JCWAD
-Author URI: https://www.jcwad.re
-Description: Nathalie Mota, photographe professionnelle dans l’événementiel.
-Text Domain: nathaliemota
+Template: twentytwenty
+Verson: 1.0.0
 */
 
-/* Init */
 * {
     padding: 0;
     margin: 0;
@@ -17,8 +12,33 @@ Text Domain: nathaliemota
 
 html,
 body {
-    font-family: Arial, sans-serif;
     background-color: rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+    font-family: 'Space-Mono';
+    font-weight: 700;
+    font-style: italic;
+    font-size: 96px;
+}
+
+h2 {
+    font-family: 'Space-Mono';
+    font-weight: 400;
+    font-style: italic;
+    font-size: 66px;
+}
+
+h3 {
+    font-family: 'Space-Mono';
+    font-weight: 400;
+    font-size: 18px;
+}
+
+p {
+    font-family: 'Poppins';
+    font-weight: 300;
+    font-size: 14px;
 }
 
 /* Container */
@@ -42,12 +62,13 @@ body {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 0;
 
             /*LOGO*/
             .logo {
 
                 max-width: 216px;
-                max-height: 14px;
+                height: 14px;
 
                 img {
                     width: 100%;
@@ -57,12 +78,20 @@ body {
 
             /*MENU*/
             .nav-menu {
+
+                .burger-bouton, .burger-close {
+                    display: none;
+                }
+
                 .menu {
                     display: flex;
                     list-style: none;
+                    margin: auto 0;
 
                     .sous-menu {
                         margin-left: 2em;
+                        margin-top: 0;
+                        line-height: 0;
 
                         .sous-menu-link {
                             text-decoration: none;
@@ -71,6 +100,14 @@ body {
                             font-size: 16px;
                             font-weight: 400;
                             line-height: 23.7px;
+                            font-family: 'Space-Mono-Regular';
+
+                            transition: all .5s;
+
+                            &:hover {
+                                font-family: 'Space-Mono-Bold';
+
+                            }
                         }
                     }
                 }
@@ -196,27 +233,47 @@ body {
 
     /*BLOC FULL IMAGE*/
     .page-content {
+        position: relative;
 
         .bloc-image-accueil {
             position: relative;
+            height: 962px;
 
-            .bloc-titre-image-accueil {
-                width: max-content;
-                position: absolute;
-                color: white;
-                font-weight: 700;
-                font-size: 96px;
-                line-height: 142.18px;
-                font-style: italic;
-                /*centrer*/
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+            img {
+                object-fit: cover;
+                height: 100%;
+                width: 100%;
             }
         }
+
+        .bloc-titre-image-accueil h1 {
+            width: max-content;
+            position: absolute;
+
+            font-family: 'Space-Mono-Bold-Italic';
+            font-weight: 700;
+            font-size: 96px;
+            line-height: 142.18px;
+            font-style: italic;
+
+
+
+            color: transparent;
+            /* Texte transparent */
+            -webkit-text-stroke: 2px white;
+            /* Contour blanc */
+
+            /*centrer*/
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            margin: 0;
+        }
+
     }
 
-    section#photo.photo,
+    .photo,
     #filtre {
 
         width: calc((1148 / 1440) * 100%);
@@ -236,6 +293,15 @@ body {
                     margin-right: 2em;
                 }
 
+                select [label].hidden {
+                    color: transparent;
+                    background-color: transparent;
+
+
+                    /*RENDRE TEXTE INVISIBLE*/
+
+                }
+
                 .select-categorie {
                     padding: 11px 18px;
                     width: 260px;
@@ -247,6 +313,7 @@ body {
                     font-size: 12px;
                     line-height: 18px;
                     text-transform: uppercase;
+                    font-family: 'Poppins';
 
                     -webkit-appearance: none;
                     /* Cache la flèche native */
@@ -278,13 +345,17 @@ body {
                 width: 564px;
                 max-width: 100%;
                 height: 495px;
-                background-color: brown;
                 text-align: center;
                 position: relative;
                 overflow: hidden;
 
-                .link-flex-photo {
 
+
+                .link-flex-photo {
+                    padding: 0;
+                    background-color: transparent;
+                    width: 100%;
+                    height: 100%;
 
                     img {
                         object-fit: cover;
@@ -303,6 +374,21 @@ body {
                         width: 100%;
                         height: 100%;
 
+                        .image-link {
+
+
+                            .card-photo-lightbox {
+                                width: 34px;
+                                height: 34px;
+                                position: absolute;
+                                top: 1em;
+                                right: 1em;
+                                cursor: pointer;
+                                object-fit: cover;
+
+
+                            }
+                        }
 
 
                         .card-photo-eye {
@@ -316,14 +402,7 @@ body {
                             transform: translate(-50%, -50%);
                         }
 
-                        .card-photo-lightbox {
-                            width: 34px;
-                            height: 34px;
-                            position: absolute;
-                            top: 1em;
-                            right: 1em;
-                            cursor: pointer;
-                        }
+
 
                         .card-photo-footer {
                             display: flex;
@@ -340,6 +419,44 @@ body {
                         display: block;
                         cursor: default;
                     }
+                }
+
+
+            }
+
+            /*BOUTON CHARGER*/
+            .bouton {
+
+                width: 272px;
+                max-width: 100%;
+                background-color: #D8D8D8;
+                outline: none;
+                border: none;
+                height: 50px;
+                max-height: 100%;
+
+                font-family: 'Space-Mono-Regular';
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 17.77px;
+                text-transform: capitalize;
+
+                cursor: pointer;
+
+                text-decoration: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                color: #000000;
+
+                margin-top: 1.5em;
+
+                transition: all .5s;
+
+                &:hover {
+                    background-color: #000000;
+                    color: white;
                 }
             }
         }
@@ -367,6 +484,7 @@ body {
                     p {
                         text-transform: uppercase;
                         font-weight: 400;
+                        font-family: 'Space-Mono-Regular';
 
                     }
 
@@ -420,6 +538,7 @@ body {
 
 
                 p {
+                    font-family: 'Poppins';
                     font-weight: 300;
                     font-size: 14px;
                     line-height: 21px;
@@ -439,8 +558,19 @@ body {
                     font-weight: 400;
                     line-height: 17.77px;
                     text-transform: capitalize;
+                    font-family: 'Space-Mono-Regular';
+
+                    color: black;
 
                     cursor: pointer;
+
+                    transition: .5s;
+
+                    &:hover {
+                        background-color: #000000;
+                        color: white;
+
+                    }
                 }
             }
 
@@ -461,7 +591,7 @@ body {
                     .image-photo-right-pagination {
                         width: 100%;
                         height: 71px;
-                        background-color: brown;
+
                     }
 
                     figcaption {
@@ -474,6 +604,11 @@ body {
                         img {
                             width: 25px;
                             height: auto;
+                            transition: .15s;
+
+                            &:hover {
+                                width: 30px;
+                            }
                         }
                     }
                 }
@@ -491,6 +626,7 @@ body {
                 font-size: 18px;
                 font-weight: 400;
                 line-height: 26.66px;
+                font-family: 'Space-Mono-Regular';
 
                 text-transform: uppercase;
                 padding-bottom: 2em;
@@ -509,13 +645,63 @@ body {
                     height: 495px;
                     max-height: 100%;
                     background-color: #D8D8D8;
+                    position: relative;
 
                     .link-photo-vous-aimerez-aussi {
 
+
                         img {
+                            object-fit: cover;
                             width: 100%;
                             height: 100%;
-                            object-fit: cover;
+                        }
+
+                        .card-photo {
+                            display: none;
+                            background-color: rgba(0, 0, 0, 0.6);
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            width: 100%;
+                            height: 100%;
+
+
+                            .card-photo-eye {
+                                width: min-content;
+                                height: min-content;
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                right: 0;
+                                bottom: 0;
+                                transform: translate(-50%, -50%);
+                            }
+
+                            .card-photo-lightbox {
+                                width: 34px;
+                                height: 34px;
+                                position: absolute;
+                                top: 1em;
+                                right: 1em;
+                                cursor: pointer;
+                            }
+
+                            .card-photo-footer {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: flex-end;
+                                color: white;
+                                width: inherit;
+                                height: inherit;
+                                padding: 1em;
+                            }
+                        }
+
+                        &:hover .card-photo {
+                            display: block;
+                            cursor: default;
                         }
                     }
 
@@ -537,9 +723,13 @@ body {
 
             .footer-menu {
                 display: flex;
-                justify-content: center;
+                justify-content: space-evenly;
                 align-items: center;
+
+                width: 60%;
+                margin: auto;
                 height: inherit;
+                padding: 0.75em 0;
 
                 .sous-menu {
                     list-style: none;
@@ -552,9 +742,30 @@ body {
                         font-size: 16px;
                         font-weight: 400;
                         line-height: 23.7px;
+                        font-family: 'Space-Mono-Regular';
+
+                        transition: all .5s;
+
+                        &:hover {
+                            font-family: 'Space-Mono-Bold';
+
+                        }
                     }
                 }
             }
         }
     }
+}
+
+.card-photo-footer {
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+
+    margin-top: -1.3em;
+}
+
+.footer-nav-widgets-wrapper{
+    display: none !important;
 }

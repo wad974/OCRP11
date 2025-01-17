@@ -25,6 +25,8 @@ foreach ($photo as $cat) {
 
             <select class="select-categorie select-1" name="choix" id="choix">
                 <option value="" selected>CATEGORIES</option>
+                <option value="#"></option>
+
                 <?php foreach ($photo as $cat): ?>
                     <?php if ($cat->taxonomy === 'category' && $cat->name !== 'Non classé'): ?>
                         <option value="<?php echo get_term_link($cat) ?>">
@@ -36,6 +38,8 @@ foreach ($photo as $cat) {
             </select>
             <select class="select-categorie select-format" name="choix" id="choix">
                 <option value="" selected>FORMAT</option>
+                <option value="#"></option>
+
                 <?php foreach ($photo as $format): ?>
                     <?php if ($format->taxonomy === 'format'): ?>
                         <option value="<?php echo get_term_link($format) ?>">
@@ -47,10 +51,11 @@ foreach ($photo as $cat) {
 
             </select>
             <select class="select-categorie select-trie" name="choix" id="choix">
-                <optgroup label="TRIER PAR">
-                    <option value="">Desc</option>
-                    <option value="">Asc</option>
-                </optgroup>
+                <option value="" selected>Trier par</option>
+                <option value="#"></option>
+                <option value="<?php echo home_url() . '/tous-les-photos?order=desc' ?>">A partir des plus récentes</option>
+                <option value="<?php echo home_url() . '/tous-les-photos?order=asc' ?>">A partir des plus anciennes</option>
+
             </select>
         </form>
     </div>

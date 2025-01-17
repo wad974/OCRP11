@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let allBouton = document.querySelectorAll('.sous-menu-link');
 
     // petite boucle for pour recupérer uniquement contact
-    console.log(allBouton);
-    console.log(divContact);
+    //console.log(allBouton);
+    //console.log(divContact);
 
     function pageContact(event) {
         //stop la propagation
@@ -69,38 +69,113 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     /***
-     * formulaire
+     * ARTICLES
      */
 
 
     // Sélectionner le formulaire et le div où le contenu sera affiché
     const form = document.getElementById('ajax-form');
-    console.log('form : ' + form);
     const select = document.querySelectorAll('#choix');
-    console.log(select);
 
     const contentDiv = document.getElementById('photo');
-    console.log('ID PHOTO : ' + contentDiv);
 
     // boucle select
     select.forEach(element => {
-        
+        console.log('filtres: ', element)
+        element.addEventListener('focus', () => {
+            const defaultOption = element.querySelector('option[value = ""]');
+            if (defaultOption) {
+                defaultOption.style.display = 'none'
+                //defaultOption.classList.add('hidden');
+                // Appliquer la classe pour cacher le texte
+            }
+        });
+        element.addEventListener('blur', () => {
+            const defaultOption = element.querySelector('option[value = ""]');
+            if (defaultOption && select.value === "") {
+                defaultOption.style.display = 'block'
+                //defaultOption.classList.remove('hidden');
+            }
+        });
+
+
         // Écouter l'événement "change" du <select>
         element.addEventListener('change', function () {
+
             const url = this.value; // Récupérer l'URL sélectionnée
-            console.log('url : ' + url);
+            if(url === '#'){
+                url= ''
+            }
             // Vérifier si une option valide a été sélectionnée
             if (url) {
                 // Créer une requête AJAX
                 const xhr = new XMLHttpRequest();
                 xhr.open('GET', url, true); // Requête GET asynchrone
-                console.log('xhr : ' + xhr.status);
 
                 // Quand la requête est terminée
                 xhr.onload = function () {
                     if (xhr.status === 200) {
                         // Injecter le contenu dans le div si status 200
                         contentDiv.innerHTML = xhr.responseText;
+
+                        /*FILTRE PAGE APRES CHARGEMENT*/
+                        console.log('CHARGER ! ARCHIVE')
+
+                        let box = document.querySelector('#diapo');
+                        let forms = document.querySelectorAll('.js-load-lightbox');
+
+                        forms.forEach(bouton => {
+                            bouton.addEventListener('click', function (event) {
+                                event.preventDefault();
+
+                                console.log('form : ', bouton)
+
+                                const ajaxUrl = bouton.getAttribute('action');
+
+                                const data = {
+                                    action: bouton.querySelector('input[name=action]').value,
+                                    nonce: bouton.querySelector('input[name=nonce]').value,
+                                    postid: bouton.querySelector('input[name=postid]').value,
+                                }
+
+                                // Pour vérifier qu'on a bien récupéré les données
+                                console.log(ajaxUrl);
+                                console.log(data);
+
+                                // Requête Ajax pour obtenir l'URL de l'image
+                                fetch(ajaxUrl, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/x-www-form-urlencoded',
+                                        'Cache-Control': 'no-cache',
+                                    },
+                                    body: new URLSearchParams(data),
+                                })
+                                    .then(response => response.json())
+                                    .then(body => {
+                                        console.log(body);
+
+                                        // En cas d'erreur
+                                        if (!body.success) {
+                                            alert(body.data); // Affiche l'erreur reçue du serveur
+                                            return;
+                                        }
+
+                                        // Utilisez les données renvoyées par le serveur ici
+                                        // Afficher la lightbox
+
+                                        // Récupérer l'URL de l'image
+                                        lightbox(body.data.image_url)
+                                        // recup diapo
+                                        diapo()
+                                    })
+                                    .catch(error => console.error('Error with the request:', error));
+
+                            });
+                        });
+
+
+
                     } else {
                         // En cas d'erreur
                         contentDiv.innerHTML = '<p>Erreur lors du chargement : ' + xhr.status + '</p>';
@@ -118,13 +193,116 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    /***
+     * 
+     * ALBUM PHOTO BOUTON CHARGER BAS PAGE ACCUEIL
+     * 
+     */
+    // Sélectionner le bouton et le div où le contenu sera affiché
+
+    const boutonCharger = document.querySelector('.bouton');
+
+    // boucle select
+    if (boutonCharger) {
+
+
+        boutonCharger.addEventListener('click', function (event) {
+            //on stop la navigation
+            event.preventDefault();
+
+            const url = this.href; // Récupérer l'URL sélectionnée
+            // Vérifier si une option valide a été sélectionnée
+            if (url) {
+                // Créer une requête AJAX
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', url, true); // Requête GET asynchrone
+
+                // Quand la requête est terminée
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        // Injecter le contenu dans le div si status 200
+                        contentDiv.innerHTML = xhr.responseText;
+
+                        /**ON CONTINUES AVEC LES BOUTON */
+
+                        console.log('CHARGER ! PAGE HOME')
+
+                        let box = document.querySelector('#diapo');
+                        let forms = document.querySelectorAll('.js-load-lightbox');
+
+                        forms.forEach(bouton => {
+                            bouton.addEventListener('click', function (event) {
+                                event.preventDefault();
+
+                                console.log('form : ', bouton)
+
+                                const ajaxUrl = bouton.getAttribute('action');
+
+                                const data = {
+                                    action: bouton.querySelector('input[name=action]').value,
+                                    nonce: bouton.querySelector('input[name=nonce]').value,
+                                    postid: bouton.querySelector('input[name=postid]').value,
+                                }
+
+                                // Pour vérifier qu'on a bien récupéré les données
+                                console.log(ajaxUrl);
+                                console.log(data);
+
+                                // Requête Ajax pour obtenir l'URL de l'image
+                                fetch(ajaxUrl, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/x-www-form-urlencoded',
+                                        'Cache-Control': 'no-cache',
+                                    },
+                                    body: new URLSearchParams(data),
+                                })
+                                    .then(response => response.json())
+                                    .then(body => {
+                                        console.log(body);
+
+                                        // En cas d'erreur
+                                        if (!body.success) {
+                                            alert(body.data); // Affiche l'erreur reçue du serveur
+                                            return;
+                                        }
+
+                                        console.log('CHARGER PLUS')
+
+
+                                        // Utilisez les données renvoyées par le serveur ici
+                                        // Afficher la lightbox
+
+                                        // Récupérer l'URL de l'image
+                                        lightbox(body.data.image_url)
+                                        // recup diapo
+                                        diapo()
+
+                                    })
+                                    .catch(error => console.error('Error with the request:', error));
+
+                            });
+                        });
+
+                    } else {
+                        // En cas d'erreur
+                        contentDiv.innerHTML = '<p>Erreur lors du chargement : ' + xhr.status + '</p>';
+                    }
+                };
+
+                // Gérer les erreurs de réseau
+                xhr.onerror = function () {
+                    contentDiv.innerHTML = '<p>Une erreur de réseau est survenue.</p>';
+                };
+
+                // Envoyer la requête
+                xhr.send();
+
+            }
+        });
+    }
 });
 
 
-/***
- * 
- * CARD-PHOTO
- * 
- */
 
 
