@@ -37,7 +37,7 @@ prev.addEventListener('mouseover', function () {
     // on réinitialise la couleur après quelques instants
     setTimeout(function () {
         img_prev.style.opacity = '0';
-    }, 500);
+    }, 2000);
 })
 
 next.addEventListener('mouseover', function () {
@@ -48,7 +48,7 @@ next.addEventListener('mouseover', function () {
     // on réinitialise la couleur après quelques instants
     setTimeout(function () {
         img_next.style.opacity = '0';
-    }, 500);
+    }, 2000);
 
 
 })
