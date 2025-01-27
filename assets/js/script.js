@@ -79,6 +79,8 @@
                 action: $(this).find('input[name=action]').val(),
                 nonce: $(this).find('input[name=nonce]').val(),
                 postid: $(this).find('input[name=postid]').val(),
+                reference: $(this).find('input[name=reference]').val(),
+                category: $(this).find('input[name=category]').val(),
             }
 
             // Pour vérifier qu'on a bien récupéré les données
@@ -104,10 +106,13 @@
                         return;
                     }
 
+                    // on stock body et image_url de php dans une variable
+                    //console.log(body)
+                    //console.log('IMAGE : ' + body.data.image_url.image)
+                    let lightboxImage = body.data.image_url
+                    console.log(lightboxImage)
 
-                    console.log(body)
-
-                    lightbox(body.data.image_url)
+                    lightbox(lightboxImage)
                     // recup diapo
                     diapo()
 

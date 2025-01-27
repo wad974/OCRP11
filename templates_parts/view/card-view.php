@@ -6,7 +6,7 @@
 
 
                 <a class="link-flex-photo" href='<?php echo the_permalink(); ?>'>
-                    <?php the_post_thumbnail('post-thumbnail'); ?>
+                    <?php the_post_thumbnail('post-thumbnail', ['class' => 'img-responsive', 'title' => 'Nathalia Mota']); ?>
                     <!-- HIDDEN CARD -->
                     <div class="card-photo">
                         <?php
@@ -20,6 +20,7 @@
                         }
 
                         $categories = get_the_terms(get_the_ID(), $name_tax);
+
 
                         if ($categories && !is_wp_error($categories)) {
                             foreach ($categories as $category) {
@@ -51,8 +52,17 @@
                                 name="action"
                                 value="lightbox">
 
+                            <!-- REFERENCE & CATEGORIE -->
+                            <input
+                                type="hidden"
+                                name="reference"
+                                value="<?php echo $reference ?>">
+                            <input
+                                type="hidden"
+                                name="category"
+                                value="<?php echo $cat ?>">
 
-                            <button class="image-link comments-load-button">
+                            <button type="submit" class="image-link comments-load-button">
                                 <img class="card-photo-lightbox" src="<?php echo get_stylesheet_directory_uri() . '/assets/images/Icon_fullscreen.png' ?>" alt="">
                             </button>
                         </form>
@@ -75,3 +85,5 @@ else : ?>
     <p>Aucun article trouvé.</p>
 
 <?php endif; ?>
+
+

@@ -69,8 +69,6 @@ function theme_styles()
         filemtime(get_stylesheet_directory() . '/assets/js/burger.js'),
         true
     );
-
-    
 }
 
 function capitaine_assets()
@@ -157,6 +155,8 @@ add_action('wp_ajax_nopriv_lightbox', 'lightbox');
 
 function lightbox()
 {
+
+
     // Vérification de sécurité
     if (
         ! isset($_REQUEST['nonce']) or
@@ -170,13 +170,27 @@ function lightbox()
         wp_send_json_error("L'identifiant de l'article est manquant.", 400);
     }
 
+    // on verifie si dans post il y a bien les contenus
+    $reference = $_POST['reference'];
+    $cat = $_POST['category'];
+
+
+    /*echo '<pre>';
+    echo print_r($reference, $cat);
+    echo '</pre>';*/
+
     // Récupération des données du formulaire
     $post_id = intval($_POST['postid']);
 
 
     // Récupération de l'image à la une
     if (has_post_thumbnail($post_id)) {
-        $image_url = get_the_post_thumbnail_url($post_id, 'full'); // Récupérer l'URL de l'image à la une
+        //$image_url[] = get_the_post_thumbnail_url($post_id, 'full'); // Récupérer l'URL de l'image à la une
+        $image_url = array(
+            'image'     => get_the_post_thumbnail_url($post_id, 'full'),
+            'reference' => $reference, // Exemple : récupérer le titre comme "référence"
+            'categorie' => $cat, // Combine les catégories en une chaîne
+        );
     } else {
         wp_send_json_error("Aucune image trouvée pour cet article.", 404);
     }

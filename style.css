@@ -75,7 +75,8 @@ p {
   width: 100%;
   height: auto;
 }
-.container .header .wrapper .nav-menu .burger-bouton, .container .header .wrapper .nav-menu .burger-close {
+.container .header .wrapper .nav-menu .burger-bouton,
+.container .header .wrapper .nav-menu .burger-close {
   display: none;
 }
 .container .header .wrapper .nav-menu .menu {
@@ -283,6 +284,10 @@ p {
   background-repeat: no-repeat;
   background-position: right 18px center;
   background-size: 20px 20px;
+}
+.container .photo .categorie form .select-categorie[option]:hover,
+.container #filtre .categorie form .select-categorie[option]:hover {
+  background-color: aqua;
 }
 .container .photo .categorie form .select-trie,
 .container #filtre .categorie form .select-trie {
@@ -519,6 +524,7 @@ p {
 .container #filtre .pagination .right-pagination .photo-right-pagination .image-photo-right-pagination {
   width: 100%;
   height: 71px;
+  opacity: 0;
 }
 .container .photo .pagination .right-pagination .photo-right-pagination figcaption,
 .container #filtre .pagination .right-pagination .photo-right-pagination figcaption {
@@ -672,4 +678,70 @@ p {
 
 .footer-nav-widgets-wrapper {
   display: none !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.form {
+  display: flex;
+  justify-content: space-around;
+}
+
+.select-titre {
+  border: 1px solid #B8BBC2;
+  border-radius: 8px;
+  display: inline-block;
+  width: 260px;
+  padding: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+.select div.selected {
+  border-radius: 8px 8px 0 0;
+  border-color: #215AFF;
+}
+
+.select-debut {
+  margin-right: 2em;
+}
+
+.select-fin {
+  margin-left: auto;
+}
+
+.select-option {
+  position: absolute;
+  z-index: 100;
+  display: none;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0.5px 0.5px 15px rgba(128, 128, 128, 0.25);
+  width: 260px;
+  list-style: none;
+  padding: 0 16px;
+}
+.select-option .option {
+  padding: 16px;
+  margin: 0 -16px;
+}
+.select-option .option:hover {
+  background-color: #E00000;
+  color: white;
+}
+.select-option .option:last-child:hover {
+  border-radius: 0 0 8px 8px;
+}
+
+.mon-bouton-charger-plus {
+  width: 100%;
+}
+.mon-bouton-charger-plus a.boutonAjax {
+  margin: auto;
 }/*# sourceMappingURL=style.css.map */

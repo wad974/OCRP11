@@ -107,19 +107,20 @@ $query = new WP_Query($random_args);
                 <div class="right-pagination">
                     <figure class="photo-right-pagination">
                         <a href="<?php echo get_permalink($prev->ID) ?>">
-                            <?php echo $prev ? get_the_post_thumbnail($prev->ID, 'thumbnail', ['class' => 'image-photo-right-pagination']) : ''; ?>
+                            <?php echo $prev ? get_the_post_thumbnail($prev->ID, 'thumbnail', ['class' => 'image-photo-right-pagination img_prev']) : ''; ?>
+                            <?php echo $next ? get_the_post_thumbnail($next->ID, 'thumbnail', ['class' => 'image-photo-right-pagination img_next']) : ''; ?>
                         </a>
 
 
                         <figcaption>
                             <?php if (!empty($prev)) : ?>
-                                <a href="<?php echo get_permalink($prev->ID); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Line-6.png" alt=""></a>
+                                <a class="prev" href="<?php echo get_permalink($prev->ID); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Line-6.png" alt=""></a>
                             <?php else: ?>
                             <?php endif; ?>
 
                             <!-- SEPARATE-->
                             <?php if (!empty($next)) : ?>
-                                <a href="<?php echo get_permalink($next->ID); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Line-7.png" alt=""></a>
+                                <a class="next" href="<?php echo get_permalink($next->ID); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/Line-7.png" alt=""></a>
                             <?php else: ?>
                             <?php endif; ?>
                         </figcaption>

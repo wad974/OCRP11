@@ -1,6 +1,6 @@
 
 
-function diapo () {
+function diapo() {
     //index du tableau slides lors des boules pour stock 
     //le nombre de passage hors de la boucle
     let tab = 0;
@@ -12,6 +12,10 @@ function diapo () {
     let arrow_right = document.querySelector("#diapo .conteneur .bottom .arrow_right");
     let image = document.querySelector('#diapo .conteneur .bottom .banner-img');
     let banner = document.querySelector('#diapo');
+
+    // div ref & cat
+    let ref = document.querySelector('.sous-image .ref');
+    let cat = document.querySelector('.sous-image .cat');
 
     /*point dots
     let dots = document.querySelector("#diapo .dots");
@@ -72,6 +76,8 @@ function diapo () {
     function affiche_image(tab) {
         // on change l'atribut image et on modifie le titre
         image.setAttribute('src', slides[tab].image);
+        ref.innerHTML = slides[tab].reference;
+        cat.innerHTML = slides[tab].categorie;
         //image.setAttribute('alt', slides[tab].tagLine);
         //titre.innerHTML = slides[tab].tagLine;
         return;

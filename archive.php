@@ -11,7 +11,7 @@ wp_head();
     $taxonomie = get_queried_object();
 
     // Debugging : Affiche l'objet récupéré
-    /*echo '<pre>';
+   /* echo '<pre>';
         print_r($taxonomie);
         echo '</pre>';*/
 

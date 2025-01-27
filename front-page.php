@@ -51,7 +51,7 @@ get_header();
 	<div class="tous-photos grid">
 		<?php
 		// Nouvelle instance de WP_Query
-		
+
 		$args = array(
 			'post_type' => 'photo',
 			'posts_per_page' => 8,
@@ -77,7 +77,7 @@ get_header();
 
 		?>
 
-		<a href=" <?php echo home_url() . '/tous-les-photos' ?>" class="bouton">
+		<a href=" <?php echo home_url() . '/tous-les-photos?nombre=8' ?>" class="bouton">
 			Charger plus
 		</a>
 	</div>

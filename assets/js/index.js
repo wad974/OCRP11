@@ -103,8 +103,8 @@ document.addEventListener('DOMContentLoaded', function () {
         element.addEventListener('change', function () {
 
             const url = this.value; // Récupérer l'URL sélectionnée
-            if(url === '#'){
-                url= ''
+            if (url === '#') {
+                url = ''
             }
             // Vérifier si une option valide a été sélectionnée
             if (url) {
@@ -199,7 +199,6 @@ document.addEventListener('DOMContentLoaded', function () {
      * 
      */
     // Sélectionner le bouton et le div où le contenu sera affiché
-
     const boutonCharger = document.querySelector('.bouton');
 
     // boucle select
@@ -227,6 +226,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         console.log('CHARGER ! PAGE HOME')
 
+                        const boutonChargerAjax = document.querySelector('.boutonAjax')
+                        console.log(boutonChargerAjax)
+
+                        boutonChargerAjax.addEventListener('click', (event) => {
+                            event.preventDefault();
+                            console.log('click bouton charger plus');
+                            const url = boutonChargerAjax.href;
+                            console.log(url);
+
+                            contentDiv.innerHTML = xhr.responseText
+                            // rappeler 
+                        });
+
                         let box = document.querySelector('#diapo');
                         let forms = document.querySelectorAll('.js-load-lightbox');
 
@@ -245,8 +257,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                 }
 
                                 // Pour vérifier qu'on a bien récupéré les données
-                                console.log(ajaxUrl);
-                                console.log(data);
+                                console.log('ajax - bouton :', +ajaxUrl);
+                                console.log('data - form: ', +data);
 
                                 // Requête Ajax pour obtenir l'URL de l'image
                                 fetch(ajaxUrl, {
@@ -283,6 +295,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
                             });
                         });
+
+
 
                     } else {
                         // En cas d'erreur
