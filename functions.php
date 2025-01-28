@@ -69,6 +69,15 @@ function theme_styles()
         filemtime(get_stylesheet_directory() . '/assets/js/burger.js'),
         true
     );
+
+    /*PAGINATION UNIQUEMENT*/
+    wp_enqueue_script(
+        'pagination-script',
+        get_stylesheet_directory_uri() . '/assets/js/pagination.js',
+        array(),
+        filemtime(get_stylesheet_directory() . '/assets/js/pagination.js'),
+        true
+    );
 }
 
 function capitaine_assets()

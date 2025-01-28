@@ -788,6 +788,7 @@ p {
 }
 
 .select-titre {
+
     border: 1px solid #B8BBC2;
     border-radius: 8px;
     display: inline-block;
@@ -799,6 +800,7 @@ p {
     font-size: 12px;
     font-weight: 500;
     line-height: 18px;
+    font-family: 'Poppins';
 
     text-transform: uppercase;
 
@@ -846,6 +848,11 @@ p {
 
         padding: 16px;
         margin: 0 -16px;
+
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 18px;
+        font-family: 'Poppins';
 
         &:hover {
             background-color: #E00000;

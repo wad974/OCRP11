@@ -15,7 +15,7 @@ if ($query->have_posts()) {
         $query->the_post();
 
         // Récupérer l'URL de l'image
-        $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+        $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'post-thumbnail');
 
         // Récupérer les termes de la taxonomie "category" pour la catégorie
         $terms_categorie = wp_get_post_terms(get_the_ID(), 'category');
