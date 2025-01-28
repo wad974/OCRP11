@@ -238,6 +238,55 @@
   }
 }
 /*
+    ECRAN MAX 876 PX
+*/
+@media all and (max-width: 876px) {
+  html .container #photo.photo,
+  html .container #filtre,
+  body .container #photo.photo,
+  body .container #filtre {
+    width: 100%;
+    padding-right: 1em;
+    padding-left: 1em;
+  }
+  html .container #photo.photo .categorie .form,
+  html .container #filtre .categorie .form,
+  body .container #photo.photo .categorie .form,
+  body .container #filtre .categorie .form {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  html .container #photo.photo .categorie .form div.select,
+  html .container #filtre .categorie .form div.select,
+  body .container #photo.photo .categorie .form div.select,
+  body .container #filtre .categorie .form div.select {
+    margin-bottom: 1em;
+  }
+  html .container #photo.photo .categorie .form div.select .select-titre,
+  html .container #photo.photo .categorie .form div.select ul,
+  html .container #filtre .categorie .form div.select .select-titre,
+  html .container #filtre .categorie .form div.select ul,
+  body .container #photo.photo .categorie .form div.select .select-titre,
+  body .container #photo.photo .categorie .form div.select ul,
+  body .container #filtre .categorie .form div.select .select-titre,
+  body .container #filtre .categorie .form div.select ul {
+    width: 50vw;
+  }
+  html .container #photo.photo .categorie .form .select-debut,
+  html .container #filtre .categorie .form .select-debut,
+  body .container #photo.photo .categorie .form .select-debut,
+  body .container #filtre .categorie .form .select-debut {
+    margin: 0;
+  }
+  html .container #photo.photo .categorie .form .select-fin,
+  html .container #filtre .categorie .form .select-fin,
+  body .container #photo.photo .categorie .form .select-fin,
+  body .container #filtre .categorie .form .select-fin {
+    margin: 0;
+  }
+}
+/*
     ECRAN MAX 768 PX
 */
 @media all and (max-width: 768px) {
@@ -495,29 +544,15 @@
   body .container #filtre .pagination .right-pagination {
     display: none;
   }
-  html .container #photo.photo .categorie,
-  html .container #filtre .categorie,
-  body .container #photo.photo .categorie,
-  body .container #filtre .categorie {
-    padding-top: 2em;
-  }
-  html .container #photo.photo .categorie form,
-  html .container #filtre .categorie form,
-  body .container #photo.photo .categorie form,
-  body .container #filtre .categorie form {
-    flex-wrap: wrap;
-  }
-  html .container #photo.photo .categorie form select.select-categorie,
-  html .container #filtre .categorie form select.select-categorie,
-  body .container #photo.photo .categorie form select.select-categorie,
-  body .container #filtre .categorie form select.select-categorie {
-    margin: 0 auto;
-    margin-bottom: 5px;
-    min-height: 43px;
-    min-width: 270px;
-    width: 100%;
-    max-width: 85%;
-    font-size: 1em;
+  html .container #photo.photo .categorie .form div.select .select-titre,
+  html .container #photo.photo .categorie .form div.select ul,
+  html .container #filtre .categorie .form div.select .select-titre,
+  html .container #filtre .categorie .form div.select ul,
+  body .container #photo.photo .categorie .form div.select .select-titre,
+  body .container #photo.photo .categorie .form div.select ul,
+  body .container #filtre .categorie .form div.select .select-titre,
+  body .container #filtre .categorie .form div.select ul {
+    width: 75vw;
   }
   html .container #photo.photo .tous-photos,
   html .container #filtre .tous-photos,

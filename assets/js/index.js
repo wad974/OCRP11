@@ -212,6 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const url = this.href; // Récupérer l'URL sélectionnée
             // Vérifier si une option valide a été sélectionnée
             if (url) {
+                console.log('TEST', url)
                 // Créer une requête AJAX
                 const xhr = new XMLHttpRequest();
                 xhr.open('GET', url, true); // Requête GET asynchrone
@@ -223,21 +224,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         contentDiv.innerHTML = xhr.responseText;
 
                         /**ON CONTINUES AVEC LES BOUTON */
-
-                        console.log('CHARGER ! PAGE HOME')
-
-                        const boutonChargerAjax = document.querySelector('.boutonAjax')
-                        console.log(boutonChargerAjax)
-
-                        boutonChargerAjax.addEventListener('click', (event) => {
-                            event.preventDefault();
-                            console.log('click bouton charger plus');
-                            const url = boutonChargerAjax.href;
-                            console.log(url);
-
-                            contentDiv.innerHTML = xhr.responseText
-                            // rappeler 
-                        });
 
                         let box = document.querySelector('#diapo');
                         let forms = document.querySelectorAll('.js-load-lightbox');
@@ -254,6 +240,8 @@ document.addEventListener('DOMContentLoaded', function () {
                                     action: bouton.querySelector('input[name=action]').value,
                                     nonce: bouton.querySelector('input[name=nonce]').value,
                                     postid: bouton.querySelector('input[name=postid]').value,
+                                    reference: bouton.querySelector('input[name=reference]').value,
+                                    category: bouton.querySelector('input[name=category]').value,
                                 }
 
                                 // Pour vérifier qu'on a bien récupéré les données
@@ -284,9 +272,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
                                         // Utilisez les données renvoyées par le serveur ici
                                         // Afficher la lightbox
+                                        let lightboxImage = body.data.image_url
 
                                         // Récupérer l'URL de l'image
-                                        lightbox(body.data.image_url)
+                                        lightbox(lightboxImage)
                                         // recup diapo
                                         diapo()
 
@@ -296,6 +285,20 @@ document.addEventListener('DOMContentLoaded', function () {
                             });
                         });
 
+                        console.log('CHARGER ! PAGE HOME')
+
+                        const boutonChargerAjax = document.querySelector('.boutonAjax')
+                        console.log(boutonChargerAjax)
+
+                        boutonChargerAjax.addEventListener('click', (event) => {
+                            event.preventDefault();
+                            console.log('click bouton charger plus');
+                            const url = boutonChargerAjax.href;
+                            console.log(url);
+
+                            contentDiv.innerHTML = xhr.responseText
+                            // rappeler 
+                        });
 
 
                     } else {

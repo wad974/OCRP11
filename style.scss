@@ -801,6 +801,9 @@ p {
     line-height: 18px;
 
     text-transform: uppercase;
+
+    background: url('./assets/images/Icon.png') right center no-repeat;
+    background-position-x: 90% !important;
 }
 
 
@@ -809,6 +812,9 @@ p {
     div.selected {
         border-radius: 8px 8px 0 0;
         border-color: #215AFF;
+
+        background: url('./assets/images/chevron-up-s.png') right center no-repeat;
+        background-position-x: 90% !important;
     }
 }
 
@@ -854,10 +860,10 @@ p {
 
 }
 
-.mon-bouton-charger-plus{
+.mon-bouton-charger-plus {
     width: 100%;
 
-    a.boutonAjax{
+    a.boutonAjax {
         margin: auto;
     }
 }

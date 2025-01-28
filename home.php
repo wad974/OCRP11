@@ -108,13 +108,13 @@ echo '</pre>';*/
 
     <?php require('templates_parts/view/card-view.php') ?>
 
-    <?php if (!isset($_GET)): ?>
+    <?php if (!isset($_GET['categorie']) || !isset($_GET['format']) || !isset($_GET['trierPar'])): ?>
         <div class="mon-bouton-charger-plus">
-            <a href=" <?php echo home_url() . '/tous-les-photos?nombre=8' ?>" class="bouton boutonAjax">
+            <a href="<?php echo home_url() . '/tous-les-photos'; ?>" class="bouton boutonAjax">
                 Charger plus
             </a>
         </div>
-    <?php endif ?>
+    <?php endif; ?>
 
 
     <?php get_template_part('templates_parts/lightbox-template') ?>

@@ -253,6 +253,57 @@
 }
 
 /*
+    ECRAN MAX 876 PX
+*/
+
+@media all and (max-width: 876px) {
+
+    html,
+    body {
+        .container {
+
+
+            #photo.photo,
+            #filtre {
+                width: 100%;
+                padding-right: 1em;
+                padding-left: 1em;
+
+                .categorie {
+
+                    .form {
+
+                        justify-content: center;
+                        flex-direction: column;
+                        align-items: center;
+
+                        div.select {
+                            margin-bottom: 1em;
+
+                            .select-titre,
+                            ul {
+                                width: 50vw;
+                            }
+                        }
+
+                        .select-debut {
+                            margin: 0;
+                        }
+
+                        .select-fin {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+
+        }
+
+    }
+
+}
+
+/*
     ECRAN MAX 768 PX
 */
 
@@ -524,20 +575,20 @@
                 }
 
                 .categorie {
-                    padding-top: 2em;
 
-                    form {
-                        flex-wrap: wrap;
+                    .form {
 
-                        select.select-categorie {
-                            margin: 0 auto;
-                            margin-bottom: 5px;
-                            min-height: 43px;
-                            min-width: 270px;
-                            width: 100%;
-                            max-width: 85%;
-                            font-size: 1em;
+
+                        div.select {
+
+
+                            .select-titre,
+                            ul {
+                                width: 75vw;
+                            }
                         }
+
+
                     }
                 }
 

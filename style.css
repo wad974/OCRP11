@@ -700,11 +700,15 @@ p {
   font-weight: 500;
   line-height: 18px;
   text-transform: uppercase;
+  background: url("./assets/images/Icon.png") right center no-repeat;
+  background-position-x: 90% !important;
 }
 
 .select div.selected {
   border-radius: 8px 8px 0 0;
   border-color: #215AFF;
+  background: url("./assets/images/chevron-up-s.png") right center no-repeat;
+  background-position-x: 90% !important;
 }
 
 .select-debut {
