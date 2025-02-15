@@ -39,7 +39,7 @@ $next = get_next_post();
 //*****QUERY RANDOM */
 // Arguments pour WP_Query
 $random_args = array(
-    'post_type' => 'photo', // Spécifiez le type de contenu que vous souhaitez récupérer
+    'post_type' => 'photo', // Spécifiez le type de contenu 
     'orderby' => 'rand',
     'posts_per_page' => 2
 );

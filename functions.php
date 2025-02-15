@@ -78,6 +78,15 @@ function theme_styles()
         filemtime(get_stylesheet_directory() . '/assets/js/pagination.js'),
         true
     );
+
+    /*FILTRES CATEGORIE UNIQUEMENT*/
+    wp_enqueue_script(
+        'filtres-script',
+        get_stylesheet_directory_uri() . '/assets/js/filtres.js',
+        array(),
+        filemtime(get_stylesheet_directory() . '/assets/js/filtres.js'),
+        true
+    );
 }
 
 function capitaine_assets()
