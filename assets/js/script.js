@@ -18,8 +18,8 @@
             }
 
             // Pour vérifier qu'on a bien récupéré les données
-            console.log(ajaxurl);
-            console.log(data);
+            //console.log(ajaxurl);
+            //console.log(data);
 
             // Requête Ajax en JS natif via Fetch
             fetch(ajaxurl, {
@@ -32,7 +32,7 @@
             })
                 .then(response => response.json())
                 .then(body => {
-                    console.log(body);
+                    //console.log(body);
 
                     // En cas d'erreur
                     if (!body.success) {
@@ -60,7 +60,7 @@
 
 /******* */
 
-/***lightbox */
+/***lightbox SANS FILTRE PAGE ACCUEIL */
 /***lightbox */
 (function ($) {
     $(document).ready(function () {
@@ -84,8 +84,8 @@
             }
 
             // Pour vérifier qu'on a bien récupéré les données
-            console.log(ajaxurl);
-            console.log(data);
+            //console.log(ajaxurl);
+            //console.log(data);
 
             // Requête Ajax pour obtenir l'URL de l'image
             fetch(ajaxurl, {
@@ -98,7 +98,7 @@
             })
                 .then(response => response.json())
                 .then(body => {
-                    console.log(body);
+                    //console.log(body);
 
                     // En cas d'erreur
                     if (!body.success) {
@@ -110,7 +110,7 @@
                     //console.log(body)
                     //console.log('IMAGE : ' + body.data.image_url.image)
                     let lightboxImage = body.data.image_url
-                    console.log(lightboxImage)
+                    console.log( 'console lightbox', lightboxImage)
 
                     lightbox(lightboxImage)
                     // recup diapo

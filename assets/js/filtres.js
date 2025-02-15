@@ -43,7 +43,7 @@ selectOptionAll.forEach((element) => {
     element.addEventListener('click', function (event) {
 
         let selectedButton = document.querySelectorAll('.select-titre');
-        console.log(selectedButton)
+        //console.log(selectedButton)
 
         /*selectedButton.innerHTML = element.textContent;
 
@@ -68,8 +68,8 @@ selectOptionAll.forEach((element) => {
             }
         });
 
-        console.log(valeur)
-        console.log(activeFilters)
+        //console.log(valeur)
+        //console.log(activeFilters)
 
         // Appliquer les filtres
         filterSlides();
@@ -107,13 +107,13 @@ function filterSlides() {
 
     // Afficher les images filtrées
     filteredSlides.forEach((slide) => {
-        console.log(slide);
+        //console.log(slide);
         // Créer une nouvelle requête AJAX
         const xhr = new XMLHttpRequest();
-        console.log(xhr)
+        //console.log(xhr)
         // Ouvrir la requête avec le fichier cible (test-view.php)
         xhr.open('GET', `/tous-les-photos?categorie=${activeFilters.categorie}&format=${activeFilters.format}&trierPar=${activeFilters.trierPar}`, true);
-        console.log(xhr)
+        //console.log(xhr)
 
         // Gérer la réponse de la requête
         xhr.onload = function () {
@@ -122,7 +122,7 @@ function filterSlides() {
                 contentDiv.innerHTML = '';
                 contentDiv.innerHTML += xhr.responseText; // Ajouter sans écraser les autres
 
-                /**LIGHTBOCCX */
+                /**LIGHTBOX APRES FILTRES PAGE ACCUEIL*/
                 let box = document.querySelector('#diapo');
                 let forms = document.querySelectorAll('.js-load-lightbox');
 
@@ -130,7 +130,7 @@ function filterSlides() {
                     bouton.addEventListener('click', function (event) {
                         event.preventDefault();
 
-                        console.log('form : ', bouton)
+                        //console.log('form : ', bouton)
 
                         const ajaxUrl = bouton.getAttribute('action');
 
@@ -138,11 +138,13 @@ function filterSlides() {
                             action: bouton.querySelector('input[name=action]').value,
                             nonce: bouton.querySelector('input[name=nonce]').value,
                             postid: bouton.querySelector('input[name=postid]').value,
+                            reference: bouton.querySelector('input[name=reference]').value,
+                            category: bouton.querySelector('input[name=category]').value,
                         }
 
                         // Pour vérifier qu'on a bien récupéré les données
-                        console.log('ajax - bouton :', +ajaxUrl);
-                        console.log('data - form: ', +data);
+                        //console.log('ajax - bouton :', +ajaxUrl);
+                        //console.log('data - form: ', +data);
 
                         // Requête Ajax pour obtenir l'URL de l'image
                         fetch(ajaxUrl, {
@@ -155,7 +157,7 @@ function filterSlides() {
                         })
                             .then(response => response.json())
                             .then(body => {
-                                console.log(body);
+                                //console.log(body);
 
                                 // En cas d'erreur
                                 if (!body.success) {
@@ -163,7 +165,7 @@ function filterSlides() {
                                     return;
                                 }
 
-                                console.log('CHARGER PLUS')
+                                console.log('FILTRES PLUS LIGHTBOX')
 
 
                                 // Utilisez les données renvoyées par le serveur ici
